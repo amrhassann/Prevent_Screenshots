@@ -1,16 +1,41 @@
-# revoke_screenshots
+## Prevent Screenshots and Screen Recording
+.
+### To know how can you prevent screenshot and screen recording in you project, just follow the next few steps
 
-A new Flutter project.
+### For Android
+#### Simply use the flutter_windowmanager package to achive that for android
+##### Add the pacakge to your dependencies
+    run flutter pub add flutter_windowmanager
+##### put this in the init state
+    FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+##### and this in the dispose:
+    FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
 
-## Getting Started
+### For IOS
+#### We will write some swift native code to achive that
+##### - In this repo go to: Ios/Runner/prevent.swift and copy all
+##### - Then Open your project in xcode and go to Runner to create swift file for example prevent.swift
+##### - Past code that you have copied.
+##### - Add this line inside your IOS/Runner/AppDelegates.swift
+    ScreenRecordHandler.shared.configure()
+.
+### Finishing
+##### - in my repo: go to lib/code/utils/screen_record_shoot_handler
+##### - do the same -> create dart file wherever you want indise the lib folder and put this code inside it.
+##### - call preventScreenRecord in initState and disposePreventScreenRecord in dispose like that:
 
-This project is a starting point for a Flutter application.
+    final ScreenRecordHandlerChannel screenRecordHandlerChannel = ScreenRecordHandlerChannel();
+   
+    @override
+     void initState() {
+       screenRecordHandlerChannel.preventScreenRecord();
+       super.initState();
+     }
 
-A few resources to get you started if this is your first Flutter project:
+     @override
+     void dispose() {
+       screenRecordHandlerChannel.disposePreventScreenRecord();
+       super.dispose();
+     }
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### Note: Test your app on a real device not on android emulator or ios simulator
