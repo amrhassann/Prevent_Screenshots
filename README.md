@@ -3,7 +3,7 @@
 ### To learn how to prevent screenshots and screen recording in your project, follow these steps:
 
 ### For Android
-#### You don't need to do anything right now; just wait until the end. The idea is that we'll simply use the `flutter_windowmanager` package to achieve this for Android.
+#### You don't need to do anything right now, just wait until the end, The idea is that we'll simply use the `flutter_windowmanager` package to achieve this for Android.
 ##### To add the package to your dependencies, run this command in the project terminal:
     flutter pub add flutter_windowmanager
     
