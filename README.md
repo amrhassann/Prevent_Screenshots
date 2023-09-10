@@ -1,26 +1,26 @@
 ## Prevent Screenshots and Screen Recording
-.
-### To know how can you prevent screenshot and screen recording in you project, just follow the next few steps
+
+### To learn how to prevent screenshots and screen recording in your project, follow these steps:
 
 ### For Android
-#### Don't do anything now, just wait for the end, the idea is we are simply using the flutter_windowmanager package to achive that for android
-##### just add the pacakge to your dependencies by running this command in project terminal 
+#### You don't need to do anything right now; just wait until the end. The idea is that we'll simply use the `flutter_windowmanager` package to achieve this for Android.
+##### To add the package to your dependencies, run this command in the project terminal:
     flutter pub add flutter_windowmanager
     
-##### just to understand, this code will start the secure mode, 
+##### To understand, this code will enable the secure mode:
     FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
-##### and this code to close the secure mode
+##### And this code will disable the secure mode:
     FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
 
-### For IOS
-#### We will write some swift native code to achive that
-##### - In this repo go to: Ios/Runner/prevent.swift and copy all
-##### - Then Open your project in xcode and go to Runner to create a swift file for example prevent.swift
-##### - Past code that you have copied.
-##### - Add this line inside your IOS/Runner/AppDelegates.swift
+### For iOS
+#### We will write some Swift native code to achieve this.
+##### - In this repository, go to: `ios/Runner/prevent.swift` and copy everything.
+##### - Then, open your project in Xcode and go to Runner to create a Swift file, for example, `prevent.swift`.
+##### - Paste the code that you have copied.
+##### - Add this line inside your `ios/Runner/AppDelegate.swift`:
     ScreenRecordHandler.shared.configure()
 
-##### - Your AppDelegate will look like that
+##### - Your `AppDelegate` will look like this:
      import UIKit
      import Flutter
 
@@ -31,7 +31,7 @@
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
       ) -> Bool {
 
-     // prevent screen shots and records
+     // Prevent screenshots and recording
         ScreenRecordHandler.shared.configure()
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -39,11 +39,10 @@
     }
 
     
-.
 ### Finishing
-##### - in my repo: go to lib/code/utils/screen_record_shoot_handler
-##### - do the same -> create dart file wherever you want inside the lib folder and put this code inside it.
-##### - call preventScreenRecord in initState and disposePreventScreenRecord in dispose like that:
+##### - In my repository, go to `lib/code/utils/screen_record_shoot_handler`.
+##### - Do the same -> create a Dart file wherever you want inside the `lib` folder and put this code inside it.
+##### - Call `preventScreenRecord` in `initState` and `disposePreventScreenRecord` in `dispose` like this:
 
     final ScreenRecordHandlerChannel screenRecordHandlerChannel = ScreenRecordHandlerChannel();
    
@@ -59,4 +58,4 @@
        super.dispose();
      }
 
-##### Note: Test your app on a real device not on android emulator or ios simulator
+##### Note: Test your app on a real device, not on an Android emulator or iOS simulator.
