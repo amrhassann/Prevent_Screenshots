@@ -42,7 +42,7 @@
 .
 ### Finishing
 ##### - in my repo: go to lib/code/utils/screen_record_shoot_handler
-##### - do the same -> create dart file wherever you want indise the lib folder and put this code inside it.
+##### - do the same -> create dart file wherever you want inside the lib folder and put this code inside it.
 ##### - call preventScreenRecord in initState and disposePreventScreenRecord in dispose like that:
 
     final ScreenRecordHandlerChannel screenRecordHandlerChannel = ScreenRecordHandlerChannel();
