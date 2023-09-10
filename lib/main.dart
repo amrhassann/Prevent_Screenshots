@@ -1,5 +1,6 @@
+
 import 'package:flutter/material.dart';
-import 'package:revoke_screenshots/core/functions.dart';
+import 'package:revoke_screenshots/core/utils/screen_record_shoot_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,15 +29,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
 
+  final ScreenRecordHandlerChannel screenRecordHandlerChannel = ScreenRecordHandlerChannel();
+
   @override
   void initState() {
-    startScreenshotPrevention();
+    screenRecordHandlerChannel.preventScreenRecord();
     super.initState();
   }
 
   @override
   void dispose() {
-    endScreenshotPrevention();
+    screenRecordHandlerChannel.disposePreventScreenRecord();
     super.dispose();
   }
 
